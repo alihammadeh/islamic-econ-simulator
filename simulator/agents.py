@@ -5,10 +5,15 @@ class Agent:
         self.agent_id = agent_id
         self.income = income
         self.assets = assets
-        self.expenses = income * 0.7  # basic assumption
+        self.expenses = income * 0.7
         self.agent_type = agent_type
         self.zakat_paid = 0
         self.wealth_history = []
+
+        # Optional debt tracking
+        self.debt_type = "none"
+        self.debt_amount = 0
+
 
     def update_assets(self):
         savings = self.income - self.expenses
@@ -20,3 +25,4 @@ class Agent:
 
     def calculate_zakat_due(self, zakat_rate):
         return self.assets * zakat_rate if self.eligible_for_zakat(nisab_threshold=5000) else 0
+    
